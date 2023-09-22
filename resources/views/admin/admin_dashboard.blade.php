@@ -37,6 +37,8 @@
    <link href="{{asset('backend/assets/plugins/datatable/css/dataTables.bootstrap5.min.css')}}" rel="stylesheet" />
    <!-- dataTables CSS -->
 
+
+
 	<title>Admin Dashboard </title>
 </head>
 
