@@ -31,7 +31,8 @@
                         <div class="form-group">
                             <label>CHECK OUT TIME</label>
                             <div class="input-group">
-                                <input id="datetimepicker-check" type="text" class="form-control" placeholder="11/02/2020">
+                                <input id="datetimepicker-check" type="text" class="form-control"
+                                    placeholder="11/02/2020">
                                 <span class="input-group-addon"></span>
                             </div>
                             <i class='bx bxs-chevron-down'></i>
