@@ -14,13 +14,14 @@
 <div class="banner-form-area">
     <div class="container">
         <div class="banner-form">
-            <form>
+            <form method="get" action="{{ route('booking.search') }}">
                 <div class="row align-items-center">
                     <div class="col-lg-3 col-md-3">
                         <div class="form-group">
                             <label>CHECK IN TIME</label>
                             <div class="input-group">
-                                <input id="datetimepicker" type="text" class="form-control" placeholder="11/02/2020">
+                                <input autocomplete="off" type="text" required name="check_in"
+                                    class="form-control dt_picker" placeholder=" Check In ">
                                 <span class="input-group-addon"></span>
                             </div>
                             <i class='bx bxs-chevron-down'></i>
@@ -31,8 +32,8 @@
                         <div class="form-group">
                             <label>CHECK OUT TIME</label>
                             <div class="input-group">
-                                <input id="datetimepicker-check" type="text" class="form-control"
-                                    placeholder="11/02/2020">
+                                <input autocomplete="off" type="text" required name="check_out"
+                                    class="form-control dt_picker" placeholder=" Check Out ">
                                 <span class="input-group-addon"></span>
                             </div>
                             <i class='bx bxs-chevron-down'></i>
@@ -42,7 +43,7 @@
                     <div class="col-lg-2 col-md-2">
                         <div class="form-group">
                             <label>GUESTS</label>
-                            <select class="form-control">
+                            <select name="persion" class="form-control">
                                 <option>01</option>
                                 <option>02</option>
                                 <option>03</option>
@@ -53,7 +54,7 @@
 
                     <div class="col-lg-4 col-md-4">
                         <button type="submit" class="default-btn btn-bg-one border-radius-5">
-                            Check Arability
+                            Check Availability
                         </button>
                     </div>
                 </div>
