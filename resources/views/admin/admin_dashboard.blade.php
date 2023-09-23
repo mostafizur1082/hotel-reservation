@@ -133,6 +133,8 @@
 	</script>
 <!--datatable JS-->
 
+
+<!--textarea JS-->
 <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
 <script>
    tinymce.init({
@@ -141,6 +143,7 @@
      toolbar: 'undo redo | blocks| bold italic | bullist numlist checklist | code | table'
    });
 </script>
+<!--textarea JS-->
 
 </body>
 
