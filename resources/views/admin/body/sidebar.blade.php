@@ -70,6 +70,8 @@
             <ul>
                 <li> <a href="{{ route('booking.list') }}"><i class='bx bx-radio-circle'></i>Booking List</a>
                 </li>
+                <li> <a href="{{ route('add.room.booking') }}"><i class='bx bx-radio-circle'></i> Add Booking </a>
+                </li>
             </ul>
         </li>
 
