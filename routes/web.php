@@ -11,6 +11,7 @@ use App\Http\Controllers\Backend\RoomController;
 use App\Http\Controllers\Frontend\FrontendRoomController;
 use App\Http\Controllers\Frontend\BookingController;
 use App\Http\Controllers\Backend\BookingController as AdminBookingController;
+use App\Http\Controllers\Backend\RoomListController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -119,6 +120,14 @@ Route::controller(RoomController::class)->group(function(){
     Route::get('/assign_room/{id}', 'AssignRoom')->name('assign_room');
     Route::get('/assign_room/store/{booking_id}/{room_number_id}', 'AssignRoomStore')->name('assign_room_store');
     Route::get('/assign_room_delete/{id}', 'AssignRoomDelete')->name('assign_room_delete');
+
+});
+
+/// Admin Room List All Route
+Route::controller(RoomListController::class)->group(function(){
+
+    Route::get('/view/room/list', 'ViewRoomList')->name('view.room.list');
+
 
 });
 

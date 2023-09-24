@@ -143,35 +143,6 @@
 
                             </table>
 
-                            <div class="col-md-5" style="float: left">
-
-                            @php
-                                $assign_rooms = App\Models\BookingRoomList::with('room_number')->where('booking_id',$editData->id)->get();
-                            @endphp
-
-                            @if (count($assign_rooms) > 0)
-                            <table class="table table-bordered">
-                                <tr>
-                                    <th>Room Number</th>
-                                    <th>Action</th>
-                                </tr>
-                                @foreach ($assign_rooms as $assign_room)
-                                <tr>
-                                    <td>{{ $assign_room->room_number->room_no }}</td>
-                                    <td>
-                                        <a href="{{ route('assign_room_delete',$assign_room->id) }}" id="delete">Delete</a>
-                                    </td>
-                                </tr>
-                                @endforeach
-
-                            </table>
-                            @else
-                            <div class="alert alert-danger text-center">
-                                Not Found Assign Room
-                            </div>
-                            @endif
-
-                            </div>
 
                             <div class="col-md-6" style="float: right">
                                 <style>
@@ -201,10 +172,38 @@
                             <a href="javascript::void(0)" class="btn btn-primary assign_room"> Assign Room</a>
                             </div>
 
+
+
+                                @php
+                                    $assign_rooms = App\Models\BookingRoomList::with('room_number')->where('booking_id',$editData->id)->get();
+                                @endphp
+
+                                @if (count($assign_rooms) > 0)
+                                <table class="table table-bordered">
+                                    <tr>
+                                        <th>Room Number</th>
+                                        <th>Action</th>
+                                    </tr>
+                                    @foreach ($assign_rooms as $assign_room)
+                                    <tr>
+                                        <td>{{ $assign_room->room_number->room_no }}</td>
+                                        <td>
+                                            <a href="{{ route('assign_room_delete',$assign_room->id) }}" id="delete">Delete</a>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+
+                                </table>
+                                @else
+                                <div class="alert alert-danger text-center">
+                                    Not Found Assign Room
+                                </div>
+                                @endif
+
+
+
                         </div>
                         {{-- // end table responsive --}}
-
-
 
                         <form action="{{ route('update.booking.status',$editData->id) }}" method="POST">
                             @csrf
