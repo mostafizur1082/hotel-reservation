@@ -136,6 +136,7 @@ Route::controller(AddBookingController::class)->group(function(){
 
     Route::get('/add/room/booking', 'AddRoomBooking')->name('add.room.booking');
     Route::post('/store/room/booking', 'StoreRoomBooking')->name('store.room.booking');
+    Route::get('/download/invoice/{id}', 'DownloadInvoice')->name('download.invoice');
 
 });
 

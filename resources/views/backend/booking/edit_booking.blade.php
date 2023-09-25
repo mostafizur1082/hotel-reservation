@@ -235,6 +235,8 @@
 
                                 <div class="col-md-12" style="margin-top: 20px;">
                                     <button type="submit" class="btn btn-primary">Update</button>
+                                    <a href="{{ route('download.invoice',$editData->id) }}" class="btn btn-warning px-3 radius-10">
+                                        <i class="lni lni-download"></i> Download Invoice</a>
                                 </div>
                             </div>
                         </form>
@@ -303,13 +305,13 @@
                         <ul class="list-group list-group-flush">
                             <li
                                 class="list-group-item d-flex bg-transparent justify-content-between align-items-center border-top">
-                                Name <span class="badge bg-success rounded-pill">{{ $editData['user']['name'] }}</span>
+                                Name <span class="badge bg-success rounded-pill">{{ $editData->name }}</span>
                             </li>
                             <li class="list-group-item d-flex bg-transparent justify-content-between align-items-center">
-                                Email <span class="badge bg-danger rounded-pill">{{ $editData['user']['email'] }} </span>
+                                Email <span class="badge bg-danger rounded-pill">{{ $editData->email }} </span>
                             </li>
                             <li class="list-group-item d-flex bg-transparent justify-content-between align-items-center">
-                                Phone <span class="badge bg-primary rounded-pill">{{ $editData['user']['phone'] }}</span>
+                                Phone <span class="badge bg-primary rounded-pill">{{ $editData->phone }}</span>
                             </li>
                             <li class="list-group-item d-flex bg-transparent justify-content-between align-items-center">
                                 Country <span
