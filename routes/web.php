@@ -14,6 +14,7 @@ use App\Http\Controllers\Backend\BookingController as AdminBookingController;
 use App\Http\Controllers\Backend\RoomListController;
 use App\Http\Controllers\Backend\AddBookingController;
 use App\Http\Controllers\Backend\SettingController;
+use App\Http\Controllers\Backend\TestimonialController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -146,6 +147,19 @@ Route::controller(AddBookingController::class)->group(function(){
 
     Route::get('/smtp/setting', 'SmtpSetting')->name('smtp.setting');
     Route::post('/smtp/update', 'SmtpUpdate')->name('smtp.update');
+
+});
+
+// Tesimonial All Route
+Route::controller(TestimonialController::class)->group(function(){
+
+    Route::get('/all/testimonial', 'AllTestimonial')->name('all.testimonial');
+    Route::get('/add/testimonial', 'AddTestimonial')->name('add.testimonial');
+    Route::post('/store/testimonial', 'StoreTestimonial')->name('testimonial.store');
+    Route::get('/edit/testimonial/{id}', 'EditTestimonial')->name('edit.testimonial');
+    Route::post('/update/testimonial', 'UpdateTestimonial')->name('testimonial.update');
+    Route::get('/delete/testimonial/{id}', 'DeleteTestimonial')->name('delete.testimonial');
+
 
 });
 
