@@ -10,6 +10,8 @@ use Carbon\Carbon;
 use Carbon\CarbonPeriod;
 use App\Models\BookingRoomList;
 use App\Models\RoomNumber;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\BookingConfirmation;
 
 class BookingController extends Controller
 {
@@ -33,6 +35,22 @@ class BookingController extends Controller
         $booking->payment_status = $request->payment_status;
         $booking->status = $request->status;
         $booking->save();
+
+        /// Start Sent Email
+
+        $sendmail = Booking::find($id);
+
+        $data = [
+            'check_in' => $sendmail->check_in,
+            'check_out' => $sendmail->check_out,
+            'name' => $sendmail->name,
+            'email' => $sendmail->email,
+            'phone' => $sendmail->phone,
+        ];
+
+        Mail::to($sendmail->email)->send(new BookingConfirmation($data));
+
+        /// End Sent Email
 
         $notification = array(
             'message' => 'Information Updated Successfully',
