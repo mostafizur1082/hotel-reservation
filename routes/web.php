@@ -13,6 +13,7 @@ use App\Http\Controllers\Frontend\BookingController;
 use App\Http\Controllers\Backend\BookingController as AdminBookingController;
 use App\Http\Controllers\Backend\RoomListController;
 use App\Http\Controllers\Backend\AddBookingController;
+use App\Http\Controllers\Backend\SettingController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -137,6 +138,14 @@ Route::controller(AddBookingController::class)->group(function(){
     Route::get('/add/room/booking', 'AddRoomBooking')->name('add.room.booking');
     Route::post('/store/room/booking', 'StoreRoomBooking')->name('store.room.booking');
     Route::get('/download/invoice/{id}', 'DownloadInvoice')->name('download.invoice');
+
+});
+
+ /// Admin setting All Route
+ Route::controller(SettingController::class)->group(function(){
+
+    Route::get('/smtp/setting', 'SmtpSetting')->name('smtp.setting');
+    Route::post('/smtp/update', 'SmtpUpdate')->name('smtp.update');
 
 });
 
