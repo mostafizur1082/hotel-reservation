@@ -167,8 +167,10 @@ Route::controller(BookingController::class)->group(function(){
    Route::post('/booking/store/', 'BookingStore')->name('user_booking_store');
    Route::post('/checkout/store/', 'CheckoutStore')->name('checkout.store');
    Route::match(['get', 'post'],'/stripe_pay', [BookingController::class, 'stripe_pay'])->name('stripe_pay');
+   ////////// User Booking Route
 
-
+   Route::get('/user/booking', 'UserBooking')->name('user.booking');
+   Route::get('/user/invoice/{id}', 'UserInvoice')->name('user.invoice');
 
 });
 
