@@ -16,6 +16,7 @@ use App\Http\Controllers\Backend\AddBookingController;
 use App\Http\Controllers\Backend\SettingController;
 use App\Http\Controllers\Backend\TestimonialController;
 use App\Http\Controllers\Backend\BlogController;
+use App\Http\Controllers\Backend\CommentController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -186,6 +187,13 @@ Route::controller(TestimonialController::class)->group(function(){
 
 });
 
+/// Frontend Comment All Route
+Route::controller(CommentController::class)->group(function(){
+    Route::get('/all/comment/', 'AllComment')->name('all.comment');
+    Route::post('/update/comment/status', 'UpdateCommentStatus')->name('update.comment.status');
+
+});
+
 
 });
 
@@ -221,3 +229,20 @@ Route::controller(BookingController::class)->group(function(){
 });
 
 }); // End Group Auth Middleware
+
+ /// Frontend Blog  All Route
+ Route::controller(BlogController::class)->group(function(){
+
+    Route::get('/blog/details/{slug}', 'BlogDetails');
+    Route::get('/blog/cat/list/{id}', 'BlogCatList');
+    Route::get('/blog', 'BlogList')->name('blog.list');
+
+});
+
+/// Frontend Comment All Route
+Route::controller(CommentController::class)->group(function(){
+
+    Route::post('/store/comment/', 'StoreComment')->name('store.comment');
+
+
+});
