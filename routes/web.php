@@ -19,6 +19,8 @@ use App\Http\Controllers\Backend\BlogController;
 use App\Http\Controllers\Backend\CommentController;
 use App\Http\Controllers\Backend\ReportController;
 use App\Http\Controllers\Backend\GalleryController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\Backend\RoleController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -280,6 +282,37 @@ Route::controller(CommentController::class)->group(function(){
 Route::controller(GalleryController::class)->group(function(){
 
     Route::get('/gallery', 'ShowGallery')->name('show.gallery');
+});
+
+// Contact All Route
+Route::controller(ContactController::class)->group(function(){
+
+    Route::get('/contact', 'ContactUs')->name('contact.us');
+    Route::post('/store/contact', 'StoreContactUs')->name('store.contact');
+     // contact message admin view
+     Route::get('/contact/message', 'AdminContactMessage')->name('contact.message');
+});
+
+/// Notification All Route
+Route::controller(BookingController::class)->group(function(){
+
+    Route::post('/mark-notification-as-read/{notification}', 'MarkAsRead');
+
+});
+
+ /// Role & Permission All Route
+ Route::controller(RoleController::class)->group(function(){
+
+    Route::get('/all/permission', 'AllPermission')->name('all.permission');
+    Route::get('/add/permission', 'AddPermission')->name('add.permission');
+    Route::post('/store/permission', 'StorePermission')->name('store.permission');
+    Route::get('/edit/permission/{id}', 'EditPermission')->name('edit.permission');
+    Route::post('/update/permission', 'UpdatePermission')->name('update.permission');
+    Route::get('/delete/permission/{id}', 'DeletePermission')->name('delete.permission');
+    Route::get('/import/permission', 'ImportPermission')->name('import.permission');
+    Route::get('/export', 'Export')->name('export');
+    Route::post('/import', 'Import')->name('import');
+
 });
 
 
