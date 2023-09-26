@@ -31,13 +31,6 @@
                                 About
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                Restaurant
-
-                            </a>
-
-                        </li>
 
                         <li class="nav-item">
                             <a href="{{ route('show.gallery') }}" class="nav-link">

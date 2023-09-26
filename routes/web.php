@@ -75,12 +75,12 @@ Route::middleware(['auth','roles:admin'])->group(function(){
     /// Team All Route
 Route::controller(TeamController::class)->group(function(){
 
-    Route::get('/all/team', 'AllTeam')->name('all.team');
-    Route::get('/add/team', 'AddTeam')->name('add.team');
+    Route::get('/all/team', 'AllTeam')->name('all.team')->middleware('permission:all.team');
+    Route::get('/add/team', 'AddTeam')->name('add.team')->middleware('permission:add.team');
     Route::post('/team/store', 'StoreTeam')->name('team.store');
-    Route::get('/edit/team/{id}', 'EditTeam')->name('edit.team');
+    Route::get('/edit/team/{id}', 'EditTeam')->name('edit.team')->middleware('permission:edit.team');
     Route::post('/team/update', 'UpdateTeam')->name('team.update');
-    Route::get('/delete/team/{id}', 'DeleteTeam')->name('delete.team');
+    Route::get('/delete/team/{id}', 'DeleteTeam')->name('delete.team')->middleware('permission:delete.team');
 
 });
 
@@ -88,7 +88,7 @@ Route::controller(TeamController::class)->group(function(){
 
 Route::controller(BookAreaController::class)->group(function(){
 
-    Route::get('/book/area', 'BookArea')->name('book.area');
+    Route::get('/book/area', 'BookArea')->name('book.area')->middleware('permission:update.bookingarea');
     Route::post('/book/area/update', 'BookAreaUpdate')->name('book.area.update');
 
 });
@@ -96,8 +96,8 @@ Route::controller(BookAreaController::class)->group(function(){
  /// RoomType All Route
  Route::controller(RoomTypeController::class)->group(function(){
 
-    Route::get('/room/type/list', 'RoomTypeList')->name('room.type.list');
-    Route::get('/add/room/type', 'AddRoomType')->name('add.room.type');
+    Route::get('/room/type/list', 'RoomTypeList')->name('room.type.list')->middleware('permission:all.room');
+    Route::get('/add/room/type', 'AddRoomType')->name('add.room.type')->middleware('permission:add.room');
     Route::post('/room/type/store', 'RoomTypeStore')->name('room.type.store');
 
 });
@@ -226,6 +226,54 @@ Route::controller(ReportController::class)->group(function(){
 
 });
 
+ /// Permission All Route
+ Route::controller(RoleController::class)->group(function(){
+
+    Route::get('/all/permission', 'AllPermission')->name('all.permission');
+    Route::get('/add/permission', 'AddPermission')->name('add.permission');
+    Route::post('/store/permission', 'StorePermission')->name('store.permission');
+    Route::get('/edit/permission/{id}', 'EditPermission')->name('edit.permission');
+    Route::post('/update/permission', 'UpdatePermission')->name('update.permission');
+    Route::get('/delete/permission/{id}', 'DeletePermission')->name('delete.permission');
+    Route::get('/import/permission', 'ImportPermission')->name('import.permission');
+    Route::get('/export', 'Export')->name('export');
+    Route::post('/import', 'Import')->name('import');
+
+});
+
+ /// Role All Route
+ Route::controller(RoleController::class)->group(function(){
+
+    Route::get('/all/roles', 'AllRoles')->name('all.roles');
+    Route::get('/add/roles', 'AddRoles')->name('add.roles');
+    Route::post('/store/roles', 'StoreRoles')->name('store.roles');
+    Route::get('/edit/roles/{id}', 'EditRoles')->name('edit.roles');
+    Route::post('/update/roles', 'UpdateRoles')->name('update.roles');
+    Route::get('/delete/roles/{id}', 'DeleteRoles')->name('delete.roles');
+
+    //role & permission
+    Route::get('/add/roles/permission', 'AddRolesPermission')->name('add.roles.permission');
+    Route::post('/role/permission/store', 'RolePermissionStore')->name('role.permission.store');
+    Route::get('/all/roles/permission', 'AllRolesPermission')->name('all.roles.permission');
+    Route::get('/admin/edit/roles/{id}', 'AdminEditRoles')->name('admin.edit.roles');
+    Route::post('/admin/roles/update/{id}', 'AdminRolesUpdate')->name('admin.roles.update');
+    Route::get('/admin/delete/roles/{id}', 'AdminDeleteRoles')->name('admin.delete.roles');
+
+});
+
+ /// Admin User All Route
+ Route::controller(AdminController::class)->group(function(){
+
+    Route::get('/all/admin', 'AllAdmin')->name('all.admin');
+    Route::get('/add/admin', 'AddAdmin')->name('add.admin');
+    Route::post('/store/admin', 'StoreAdmin')->name('store.admin');
+    Route::get('/edit/admin/{id}', 'EditAdmin')->name('edit.admin');
+    Route::post('/update/admin/{id}', 'UpdateAdmin')->name('update.admin');
+    Route::get('/delete/admin/{id}', 'DeleteAdmin')->name('delete.admin');
+
+});
+
+
 
 });
 
@@ -300,19 +348,5 @@ Route::controller(BookingController::class)->group(function(){
 
 });
 
- /// Role & Permission All Route
- Route::controller(RoleController::class)->group(function(){
-
-    Route::get('/all/permission', 'AllPermission')->name('all.permission');
-    Route::get('/add/permission', 'AddPermission')->name('add.permission');
-    Route::post('/store/permission', 'StorePermission')->name('store.permission');
-    Route::get('/edit/permission/{id}', 'EditPermission')->name('edit.permission');
-    Route::post('/update/permission', 'UpdatePermission')->name('update.permission');
-    Route::get('/delete/permission/{id}', 'DeletePermission')->name('delete.permission');
-    Route::get('/import/permission', 'ImportPermission')->name('import.permission');
-    Route::get('/export', 'Export')->name('export');
-    Route::post('/import', 'Import')->name('import');
-
-});
 
 

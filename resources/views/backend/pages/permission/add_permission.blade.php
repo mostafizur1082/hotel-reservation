@@ -54,6 +54,7 @@
                                             <option value="Hotel Gallery ">Hotel Gallery </option>
                                             <option value="Contact Message ">Contact Message </option>
                                             <option value="Role and Permission">Role and Permission </option>
+                                            <option value="Manage Admin">Manage Admin</option>
                                         </select>
 
                                     </div>
